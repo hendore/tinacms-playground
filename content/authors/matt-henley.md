@@ -1,5 +1,5 @@
 ---
-fullname: Matt Henley
-avatar: /favicon.svg
+fullname: Bart Simpson
+avatar: /uploads/avatars/bart-simpson.jpg
 ---
 
