@@ -1,0 +1,20 @@
+---
+import { tinaField } from "@tinacms/astro";
+import TinaMarkdown from "@tinacms/astro/TinaMarkdown.astro";
+
+const { blogpost } = Astro.props;
+---
+
+<div>
+  <h1 data-tina-field={tinaField(blogpost, "title")}>{blogpost.title}</h1>
+  <div
+    data-tina-field={tinaField(blogpost.author, "fullname")}
+    class="flex items-center"
+  >
+    <img src={blogpost.author.avatar} width="48" />
+    <span>{blogpost.author.fullname}</span>
+  </div>
+  <div data-tina-field={tinaField(blogpost, "body")} class="prose lg:prose-xl">
+    <TinaMarkdown content={blogpost.body} />
+  </div>
+</div>

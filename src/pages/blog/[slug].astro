@@ -1,0 +1,26 @@
+---
+import { client } from "../../../tina/__generated__/client";
+import { requestWithMetadata } from "@tinacms/astro";
+import RootLayout from "../../layouts/root.astro";
+import TinaIsland from "@tinacms/astro/TinaIsland.astro";
+import Blogpost from "../../components/blogpost.astro";
+import islands from "../../lib/astro-islands";
+
+const slug = Astro.params.slug || "";
+const { data } = await requestWithMetadata(
+  client.queries.blogpost({ relativePath: `${slug}.mdx` }),
+  { priority: "primary" },
+);
+const blogpost = data.blogpost;
+---
+
+<RootLayout>
+  <TinaIsland
+    name="blogpost"
+    wrapper={islands.blogpost.wrapper}
+    params={{ slug }}
+    primary
+  >
+    <Blogpost blogpost={blogpost} />
+  </TinaIsland>
+</RootLayout>

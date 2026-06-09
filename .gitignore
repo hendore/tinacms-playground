@@ -1,0 +1,10 @@
+node_modules
+dist
+public/admin
+.astro
+npm-debug.log*
+.env
+.env.*
+.DS_Store
+.vscode
+__generated__

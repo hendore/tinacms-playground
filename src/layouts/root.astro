@@ -1,0 +1,36 @@
+---
+import "../styles/global.css";
+
+const title = Astro.props.title || "Astronaut Demo";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-white text-slate-900 antialiased">
+    <div class="mx-auto flex min-h-screen max-w-5xl flex-col px-6">
+      <header class="flex items-center justify-between border-b border-slate-200 py-6">
+        <a href="/" class="text-lg font-medium tracking-tight text-slate-900 transition-colors hover:text-slate-600">
+          Astro Demo
+        </a>
+        <a href="/blog" class="text-sm font-medium text-slate-500 transition-colors hover:text-slate-900">
+          Blog
+        </a>
+      </header>
+
+      <main class="flex-1 py-10">
+        <slot />
+      </main>
+
+      <footer class="border-t border-slate-200 py-6 text-sm text-slate-400">
+        <p>Copyright notice goes here</p>
+      </footer>
+    </div>
+  </body>
+</html>

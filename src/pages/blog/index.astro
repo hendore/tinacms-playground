@@ -1,0 +1,28 @@
+---
+import { client } from "../../../tina/__generated__/client";
+import RootLayout from "../../layouts/root.astro";
+import BlogIndex from "../../components/blog-index.astro";
+
+const { data } = await client.queries.blogpostConnection();
+
+const blogposts =
+  data.blogpostConnection.edges?.map((edge) => {
+    const blogpost = edge.node;
+    const author = blogpost?.author;
+
+    return {
+      slug: blogpost?._sys.filename,
+      title: blogpost?.title,
+      author: author
+        ? {
+            fullname: author.fullname,
+            avatar: author.avatar,
+          }
+        : null,
+    };
+  }) ?? [];
+---
+
+<RootLayout>
+  <BlogIndex posts={blogposts} />
+</RootLayout>
